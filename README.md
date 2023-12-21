@@ -1,1 +1,1 @@
-# Identify-slow-learners
+# educational.github.io

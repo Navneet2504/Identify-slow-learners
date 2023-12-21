@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <title>Student Registration Form</title>
+
+    <script type="text/javascript">
+        function validate() {
+            var firstName = document.getElementById('first').value;
+            console.log(firstName);
+            var lastName = document.getElementById('last').value;
+            console.log(lastName);
+            var gender = document.forms["myForm"]["Gender"].value;
+            console.log(gender);
+            var mobile = document.getElementById('mobile').value;
+            console.log(mobile)
+            var email = document.getElementById('email').value;
+            console.log(email);
+            var parentEducation = document.getElementById('parent').value; // Assuming this is for parent education
+            console.log(parentEducation);
+            var mathScore = parseFloat(document.getElementById('math').value) || 0; // Assuming this is for math score
+            console.log(mathScore);
+            var readingScore = parseFloat(document.getElementById('reading').value) || 0; // Assuming this is for reading score
+            console.log(readingScore);
+            var writingScore = parseFloat(document.getElementById('writing').value) || 0; // Assuming this is for writing score
+            console.log(writingScore);
+
+            // Check if required fields are filled out
+            if (firstName === "" || lastName === "" || gender === "" || mobile === "" || email === "" || parentEducation === "" || mathScore === "" || readingScore === "" || writingScore === "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+            var totalScore = mathScore + readingScore + writingScore;
+            console.log("Total Score: " + totalScore);
+
+            // You can use 'totalScore' as needed, for example, display it in an alert:
+            // alert("Total Score: " + totalScore);
+            if (totalScore < 50) {
+                document.getElementById('resultMessage').innerText = firstName + " is a slow learner ";
+            } else {
+                document.getElementById('resultMessage').innerText = firstName + " is not a Slow learner.  ";
+            }
+            document.getElementById('myForm').style.display = 'none';
+
+
+
+
+
+
+
+            // Additional validation logic can be added as needed
+
+            // If all validation checks pass, return true
+            return true;
+        }
+        function removeLocalhostAddress(message) {
+            // Replace localhost address with an empty string
+            return message.replace("localhost", "");
+        }
+
+        function handleSubmit(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+            // Show a pop-up message
+            if (validate()) alert('Form submitted successfully!');
+            // You can add additional logic or send the form data to the server here
+        }
+    </script>
+    <link rel="stylesheet" href="detail.css" />
+</head>
+
+<body>
+    <center>
+        <div class="hello" style="color: aliceblue;">
+            <form action="#" name="myForm" onsubmit="handleSubmit(event)" style="color: rgb(229, 229, 241);">
+                <h1 align="center">STUDENT DETAIL FORM</h1>
+                <table align="center" cellpadding="9" style="color: rgb(235, 240, 245);">
+
+                    <tr>
+                        <td> First Name : </td>
+                        <td>
+                            <input type="text" name="First_Name" id="first" placeholder="First Name" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> Last Name : </td>
+                        <td>
+                            <input type="text" name="Last_Name" id="last" placeholder="Last Name" />
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td> Gender : </td>
+                        <td> Male
+                            <input type="radio" name="Gender" value="male" />
+                            Female
+
+                            <input type="radio" name="Gender" value="female" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> Moblie No. </td>
+                        <td>
+                            <input type="text" name="Mobile" id="mobile" placeholder="Moblie Number" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> Email : </td>
+                        <td> <input type="text" name="Email" id="email" placeholder="Email Id" />
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td> Parent level of Education</td>
+                        <td><input type="text" id="parent" name="Password" placeholder="Enter" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Math Score: </td>
+                        <td><input type="text" name="Password" id="math" placeholder="out of 100" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Reading Score: </td>
+                        <td><input type="text" name="Password" id="reading" placeholder="out of 100" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Writing Score: </td>
+                        <td><input type="text" name="Password" id="writing" placeholder="out of 100" />
+                        </td>
+                    </tr>
+
+                </table>
+
+                <br>
+                <input type="Submit" Value="Submit" id="submitButton" />
+            </form>
+            <h2 id="resultMessage" style="color: rgb(0, 255, 238);"></h2>
+        </div>
+    </center>
+</body>
+
+</html>
